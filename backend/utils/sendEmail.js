@@ -8,46 +8,67 @@ const sendEmail = async (options) => {
 
     const transporter = nodemailer.createTransport({
 
-    host: "smtp.gmail.com",
+        host: "smtp.gmail.com",
 
-    port: 587,
+        port: 587,
 
-    secure: false,
+        secure: false,
 
-    auth: {
+        auth: {
 
-        user: process.env.EMAIL_USER,
+            user: process.env.EMAIL_USER,
 
-        pass: process.env.EMAIL_PASS
+            pass: process.env.EMAIL_PASS
 
-    },
+        },
 
-    tls: {
+        tls: {
 
-        rejectUnauthorized: false
+            rejectUnauthorized: false
+
+        }
+
+    });
+
+    try {
+
+        console.log("Verifying SMTP connection...");
+
+        await transporter.verify();
+
+        console.log("SMTP connection successful");
+
+        const mailOptions = {
+
+            from: `"Expense Tracker" <${process.env.EMAIL_USER}>`,
+
+            to: options.email,
+
+            subject: options.subject,
+
+            html: options.message
+
+        };
+
+        console.log("Sending email to:", options.email);
+
+        const info = await transporter.sendMail(mailOptions);
+
+        console.log("Email sent successfully");
+
+        console.log(info);
 
     }
 
-});
+    catch (error) {
 
-    const mailOptions = {
+        console.error("EMAIL ERROR:");
 
-        from: `"Expense Tracker" <${process.env.EMAIL_USER}>`,
+        console.error(error);
 
-        to: options.email,
+        throw error;
 
-        subject: options.subject,
-
-        html: options.message
-
-    };
-    console.log("Sending email to:", options.email);
-
-    await transporter.sendMail(mailOptions);
-
-    console.log("Email sent successfully");
-
-
+    }
 
 };
 
