@@ -1,0 +1,236 @@
+/* ===========================
+   Reports Page
+=========================== */
+
+.main-content{
+    padding:30px;
+    background:#EEF4FF;
+    min-height:100vh;
+}
+
+/* ===========================
+Header
+=========================== */
+
+.page-header h1{
+    font-size:38px;
+    font-weight:700;
+    color:#1F2937;
+}
+
+.page-header p{
+    margin-top:6px;
+    color:#64748B;
+}
+
+/* ===========================
+Filters
+=========================== */
+
+.filter-card{
+
+    margin-top:25px;
+
+    background:#fff;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr 220px;
+
+    gap:15px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+}
+
+.filter-card select{
+
+    height:52px;
+
+    border:1px solid #D6E0F5;
+
+    border-radius:12px;
+
+    padding:0 15px;
+
+    font-size:15px;
+
+    outline:none;
+
+}
+
+#generateReport{
+
+    border:none;
+
+    background:#3B5BDB;
+
+    color:white;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+#generateReport:hover{
+
+    background:#2F4FD2;
+
+}
+
+/* ===========================
+Summary Cards
+=========================== */
+
+.summary-grid{
+
+    margin-top:25px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.summary-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+}
+
+.summary-card h4{
+
+    color:#64748B;
+
+    font-size:15px;
+
+    margin-bottom:15px;
+
+}
+
+.summary-card h2{
+
+    font-size:36px;
+
+    font-weight:700;
+
+}
+
+/* ===========================
+Chart Cards
+=========================== */
+
+.chart-card{
+
+    margin-top:25px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+}
+
+.chart-card h2{
+
+    margin-bottom:25px;
+
+    font-size:28px;
+
+}
+
+/* ===========================
+Line Chart
+=========================== */
+
+.line-chart-container{
+
+    position:relative;
+
+    width:100%;
+
+    height:420px;
+
+}
+
+/* ===========================
+Pie Chart
+=========================== */
+
+.pie-chart-container{
+
+    position:relative;
+
+    width:100%;
+
+    height:450px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+#lineChart,
+#incomeExpenseChart,
+#categoryChart{
+
+    width:100% !important;
+
+    height:100% !important;
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:1000px){
+
+.summary-grid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+.filter-card{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:700px){
+
+.summary-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
