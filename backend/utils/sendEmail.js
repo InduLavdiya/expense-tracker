@@ -32,7 +32,7 @@ const sendEmail = async (options) => {
 
         const info = await transporter.sendMail({
 
-            from: `"Expense Tracker" <${process.env.EMAIL_USER}>`,
+            from: `"Expense Tracker" <${process.env.SENDER_EMAIL}>`,
 
             to: options.email,
 
