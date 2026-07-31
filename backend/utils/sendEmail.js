@@ -9,17 +9,12 @@ const sendEmail = async (options) => {
     const transporter = nodemailer.createTransport({
 
         host: "smtp-relay.brevo.com",
-
         port: 587,
-
         secure: false,
 
         auth: {
-
             user: process.env.EMAIL_USER,
-
             pass: process.env.EMAIL_PASS
-
         }
 
     });
@@ -32,11 +27,8 @@ const sendEmail = async (options) => {
         const info = await transporter.sendMail({
 
             from: `"Expense Tracker" <${process.env.EMAIL_USER}>`,
-
             to: options.email,
-
             subject: options.subject,
-
             html: options.message
 
         });
@@ -46,9 +38,14 @@ const sendEmail = async (options) => {
 
     }
 
-    catch(error){
+    catch (error) {
 
-        console.error("EMAIL ERROR:");
+        console.error("========== EMAIL ERROR ==========");
+        console.error("Message:", error.message);
+        console.error("Code:", error.code);
+        console.error("Command:", error.command);
+        console.error("Response:", error.response);
+        console.error("ResponseCode:", error.responseCode);
         console.error(error);
 
         throw error;
