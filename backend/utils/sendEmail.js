@@ -20,25 +20,16 @@ const sendEmail = async (options) => {
 
             pass: process.env.EMAIL_PASS
 
-        },
-
-        tls: {
-
-            rejectUnauthorized: false
-
         }
 
     });
 
     try {
 
-        console.log("Verifying SMTP connection...");
+        console.log("Skipping verify()...");
+        console.log("Sending email to:", options.email);
 
-        await transporter.verify();
-
-        console.log("SMTP connection successful");
-
-        const mailOptions = {
+        const info = await transporter.sendMail({
 
             from: `"Expense Tracker" <${process.env.EMAIL_USER}>`,
 
@@ -48,22 +39,16 @@ const sendEmail = async (options) => {
 
             html: options.message
 
-        };
-
-        console.log("Sending email to:", options.email);
-
-        const info = await transporter.sendMail(mailOptions);
+        });
 
         console.log("Email sent successfully");
-
         console.log(info);
 
     }
 
-    catch (error) {
+    catch(error){
 
         console.error("EMAIL ERROR:");
-
         console.error(error);
 
         throw error;
